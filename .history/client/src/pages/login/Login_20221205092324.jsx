@@ -10,13 +10,8 @@ export default function Login() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    loginCall({ email, password }, dispatch);
   };
-
-  console.log(user);
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -39,7 +34,7 @@ export default function Login() {
               placeholder="Password"
               type="password"
               required
-              // minLength="6"
+              minLength="6"
               className="loginInput"
               ref={password}
             />
