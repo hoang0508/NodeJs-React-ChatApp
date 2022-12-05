@@ -3,10 +3,9 @@ import { MoreVert } from "@material-ui/icons";
 import { Users } from "../../dummyData";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
-  const [like, setLike] = useState(post.likes.length);
+  const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -19,25 +18,23 @@ export default function Post({ post }) {
   // lấy user data
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
+      const res = await axios.get(`users/${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
-  }, [post.userId]);
+  }, []);
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${user?.username}`}>
-              <img
-                className="postProfileImg"
-                src={user.profilePicture || PF + "person/noAvatar.png"}
-                alt=""
-              />
-            </Link>
+            <img
+              className="postProfileImg"
+              src={user.profilePicture || PF + "person/noAvatar.png"}
+              alt=""
+            />
             <span className="postUsername">{user.username}</span>
-            <span className="postDate">{post?.date}</span>
+            <span className="postDate">{post.date}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -45,7 +42,7 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img className="postImg" src={PF + post.img} alt="" />
+          <img className="postImg" src={PF + post.photo} alt="" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

@@ -1,22 +1,14 @@
-import { useContext, useRef } from "react";
-import { loginCall } from "../../apiCall";
-import { AuthContext } from "../../context/AuthContext";
+import { useRef } from "react";
 import "./login.css";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
-  const { user, isFecthing, error, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    console.log(email, password);
   };
-
-  console.log(user);
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -39,7 +31,7 @@ export default function Login() {
               placeholder="Password"
               type="password"
               required
-              // minLength="6"
+              minLength="6"
               className="loginInput"
               ref={password}
             />

@@ -14,9 +14,9 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        user: state.user,
-        isFecthing: state.isFecthing,
-        error: state.error,
+        user: StaticRange.user,
+        isFecthing: StaticRange.isFecthing,
+        error: StaticRange.error,
         dispatch,
       }}
     >

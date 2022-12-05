@@ -39,7 +39,7 @@ export default function Login() {
               placeholder="Password"
               type="password"
               required
-              // minLength="6"
+              minLength="6"
               className="loginInput"
               ref={password}
             />
