@@ -1,0 +1,28 @@
+{
+  "name": "media_social_chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoangMoon/Media_Social_ChatAPP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HoangMoon/Media_Social_ChatAPP/issues"
+  },
+  "homepage": "https://github.com/HoangMoon/Media_Social_ChatAPP#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.0",
+    "mongoose": "^6.7.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
