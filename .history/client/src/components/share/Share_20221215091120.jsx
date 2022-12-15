@@ -124,7 +124,7 @@ export default function Share() {
           </div> */}
         </div>
         <hr className="shareHr" />
-        <form className="shareBottom" onSubmit={handleSubmitShare}>
+        {/* <form className="shareBottom" onSubmit={handleSubmitShare}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
@@ -154,7 +154,7 @@ export default function Share() {
           <button className="shareButton" type="submit">
             Chia sẻ
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );

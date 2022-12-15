@@ -55,7 +55,7 @@ export default function Share() {
             className="shareInput"
             ref={desc}
           />
-          {/* <div className="modal-share">
+          <div className="modal-share">
             <div className="modal-share--content">
               <div className="modal-share--info">
                 <div className="modal-share--avatar">
@@ -121,10 +121,10 @@ export default function Share() {
                 </button>
               </form>
             </div>
-          </div> */}
+          </div>
         </div>
         <hr className="shareHr" />
-        <form className="shareBottom" onSubmit={handleSubmitShare}>
+        {/* <form className="shareBottom" onSubmit={handleSubmitShare}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
@@ -154,7 +154,7 @@ export default function Share() {
           <button className="shareButton" type="submit">
             Chia sẻ
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );

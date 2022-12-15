@@ -44,7 +44,7 @@ export default function Rightbar({ user }) {
   const ProfileRightbar = () => {
     return (
       <>
-        <h4 className="rightbarTitle">Thông tin</h4>
+        <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
@@ -59,25 +59,16 @@ export default function Rightbar({ user }) {
             <span className="rightbarInfoValue">{user.relationship}</span>
           </div>
         </div>
-        <h4 className="rightbarTitle">Bạn bè</h4>
-        <span className="rightbarPeople">{friends?.length} người bạn</span>
+        <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          {friends &&
-            friends.length > 0 &&
-            friends.map((item) => (
-              <div className="rightbarFollowing">
-                <img
-                  src={
-                    item?.profilePicture
-                      ? PF + item?.profilePicture
-                      : PF + "person/noAvatar.png"
-                  }
-                  alt=""
-                  className="rightbarFollowingImg"
-                />
-                <span className="rightbarFollowingName">{item?.username}</span>
-              </div>
-            ))}
+          <div className="rightbarFollowing">
+            <img
+              src={`${PF}person/1.jpeg`}
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">John Carter</span>
+          </div>
         </div>
       </>
     );
