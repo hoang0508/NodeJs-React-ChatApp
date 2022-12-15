@@ -1,4 +1,4 @@
-import { createContext, useReducer, useRef, useState } from "react";
+import { createContext, useReducer, useRef } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
@@ -14,10 +14,6 @@ export const AuthContextProvider = ({ children }) => {
   const desc = useRef();
   const [file, setFile] = useState(null);
   const [showShare, setShowShare] = useState(false);
-
-  const handleClickShowShare = () => {
-    setShowShare(!showShare);
-  };
   return (
     <AuthContext.Provider
       value={{
@@ -30,7 +26,6 @@ export const AuthContextProvider = ({ children }) => {
         setFile,
         showShare,
         setShowShare,
-        handleClickShowShare,
       }}
     >
       {children}

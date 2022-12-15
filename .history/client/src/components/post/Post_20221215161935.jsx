@@ -11,7 +11,6 @@ export default function Post({ post }) {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const [friends, setFriends] = useState([]);
-  const [textLike, setTextLike] = useState("");
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
 
@@ -19,9 +18,9 @@ export default function Post({ post }) {
     setIsLiked(post?.like?.includes(currentUser?._id));
   }, [post?.like, currentUser?._id]);
 
-  const Likehandle = () => {
+  const Likehandle = async () => {
     try {
-      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (error) {
       console.log(error);
     }
@@ -50,24 +49,26 @@ export default function Post({ post }) {
     getFriends();
   }, [user]);
 
+  console.log(friends);
+
+  let textLike = "";
   const userLike =
     friends &&
     friends.length > 0 &&
-    friends
-      .slice(0, 3)
-      .map((item) => item?.username)
-      .join(",");
+    friends.slice(0, 3).map((item) => item?.username);
 
-  useEffect(() => {
-    if (like === 0) {
-      setTextLike("Chưa có lượt thích!");
-    } else if (like < 3) {
-      setTextLike(`${like} lượt thích`);
-    } else if (like >= 3) {
-      setTextLike(`${userLike} và ${friends.length} người khác`);
-    }
-  }, [like]);
+  console.log(userLike);
 
+  switch (like) {
+    case like < 1:
+      textLike = "Chưa có lượt thích!";
+      break;
+    case like >= 3:
+      textLike = `${userLike} và ${friends.length} người khác`;
+    default:
+      textLike = "Chưa có lượt thích!";
+      break;
+  }
   return (
     <div className="post">
       <div className="postWrapper">

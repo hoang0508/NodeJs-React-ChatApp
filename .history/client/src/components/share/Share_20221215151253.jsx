@@ -8,13 +8,16 @@ import {
   BsFillCameraVideoFill,
   BsFillEmojiLaughingFill,
 } from "react-icons/bs";
+import { GrFormClose } from "react-icons/gr";
 import { IoIosImages } from "react-icons/io";
 import ModalShare from "../modal/ModalShare";
 
 export default function Share() {
-  const { user, desc, file, setFile, showShare, handleClickShowShare } =
-    useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc = useRef();
+  const [file, setFile] = useState(null);
+  const [showShare, setShowShare] = useState(false);
 
   const handleSubmitShare = async (e) => {
     e.preventDefault();
@@ -41,6 +44,10 @@ export default function Share() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleClickShowShare = () => {
+    setShowShare(!showShare);
   };
 
   return (
@@ -87,7 +94,7 @@ export default function Share() {
             </div>
           </div>
           {showShare && (
-            <ModalShare textBtn="Chia sẻ" handleSubmitShare={handleSubmitShare}>
+            <ModalShare textBtn="Chia sẻ">
               <>
                 <div className="modal-share--info">
                   <div className="modal-share--avatar">

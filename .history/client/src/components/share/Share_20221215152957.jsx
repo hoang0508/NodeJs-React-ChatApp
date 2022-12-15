@@ -12,8 +12,7 @@ import { IoIosImages } from "react-icons/io";
 import ModalShare from "../modal/ModalShare";
 
 export default function Share() {
-  const { user, desc, file, setFile, showShare, handleClickShowShare } =
-    useContext(AuthContext);
+  const { user, desc, file } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleSubmitShare = async (e) => {
@@ -41,6 +40,10 @@ export default function Share() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleClickShowShare = () => {
+    setShowShare(!showShare);
   };
 
   return (

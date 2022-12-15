@@ -1,10 +1,8 @@
-import "./topbar.scss";
-import { Search } from "@material-ui/icons";
+import "./topbar.css";
+import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { FaFacebookMessenger } from "react-icons/fa";
-import { IoNotificationsSharp } from "react-icons/io5";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -28,11 +26,11 @@ export default function Topbar() {
       <div className="topbarRight">
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <FaFacebookMessenger />
+            <Chat />
             <span className="topbarIconBadge">2</span>
           </div>
           <div className="topbarIconItem">
-            <IoNotificationsSharp />
+            <Notifications />
             <span className="topbarIconBadge">1</span>
           </div>
         </div>

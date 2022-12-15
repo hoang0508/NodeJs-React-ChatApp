@@ -34,27 +34,7 @@
       &-item {
         display: flex;
         align-items: center;
-        gap: 0 10px;
-        &--video {
-          font-size: 20px;
-          svg {
-            fill: crimson;
-          }
-        }
-        &--image {
-          font-size: 20px;
-
-          svg {
-            fill: #20e3b2;
-          }
-        }
-        &--emjoy {
-          font-size: 20px;
-
-          svg {
-            fill: #ff6651;
-          }
-        }
+        gap: 0 8px;
       }
     }
   }

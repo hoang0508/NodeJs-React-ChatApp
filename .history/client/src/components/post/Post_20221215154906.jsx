@@ -10,8 +10,6 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
-  const [friends, setFriends] = useState([]);
-  const [textLike, setTextLike] = useState("");
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
 
@@ -19,9 +17,9 @@ export default function Post({ post }) {
     setIsLiked(post?.like?.includes(currentUser?._id));
   }, [post?.like, currentUser?._id]);
 
-  const Likehandle = () => {
+  const Likehandle = async () => {
     try {
-      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (error) {
       console.log(error);
     }
@@ -37,37 +35,6 @@ export default function Post({ post }) {
     };
     fetchUser();
   }, [post.userId]);
-
-  useEffect(() => {
-    const getFriends = async () => {
-      try {
-        const friendList = await axios.get("/users/friends/" + user._id);
-        setFriends(friendList.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getFriends();
-  }, [user]);
-
-  const userLike =
-    friends &&
-    friends.length > 0 &&
-    friends
-      .slice(0, 3)
-      .map((item) => item?.username)
-      .join(",");
-
-  useEffect(() => {
-    if (like === 0) {
-      setTextLike("Chưa có lượt thích!");
-    } else if (like < 3) {
-      setTextLike(`${like} lượt thích`);
-    } else if (like >= 3) {
-      setTextLike(`${userLike} và ${friends.length} người khác`);
-    }
-  }, [like]);
-
   return (
     <div className="post">
       <div className="postWrapper">
@@ -110,7 +77,7 @@ export default function Post({ post }) {
               onClick={Likehandle}
               alt=""
             />
-            <span className="postLikeCounter">{textLike}</span>
+            <span className="postLikeCounter">{like}</span>
           </div>
           <div className="postBottomRight">
             <span className="postCommentText">{post.comment} comments</span>

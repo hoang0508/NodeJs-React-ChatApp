@@ -1,76 +1,37 @@
 .share {
   width: 100%;
+  height: 170px;
   border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   .shareWrapper {
     padding: 10px;
   }
 
   .shareTop {
     display: flex;
-    flex-direction: column;
-    .shareProfile {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-      .shareProfileImg {
-        width: 40px;
-        height: 40px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 100rem;
-        }
-      }
-    }
-    .shareVideo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      &-item {
-        display: flex;
-        align-items: center;
-        gap: 0 10px;
-        &--video {
-          font-size: 20px;
-          svg {
-            fill: crimson;
-          }
-        }
-        &--image {
-          font-size: 20px;
+    align-items: center;
+  }
 
-          svg {
-            fill: #20e3b2;
-          }
-        }
-        &--emjoy {
-          font-size: 20px;
-
-          svg {
-            fill: #ff6651;
-          }
-        }
-      }
-    }
+  .shareProfileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
   }
 
   .shareInput {
     border: none;
-    width: 100%;
-    padding: 10px;
-    background-color: #f0f2f5;
-    border-radius: 100rem;
-    font-size: 16px;
-    font-weight: 400;
+    width: 80%;
   }
 
   .shareInput:focus {
     outline: none;
+  }
+
+  .shareHr {
+    margin: 20px;
   }
 
   .shareBottom {
@@ -129,7 +90,6 @@
       border-radius: 20px;
       max-width: 450px;
       width: 100%;
-      position: relative;
     }
     &--close {
       position: absolute;
