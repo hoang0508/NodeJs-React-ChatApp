@@ -12,9 +12,11 @@
     "multer": "^1.4.5-lts.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.7.1",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
+    "sass": "^1.56.2",
     "timeago.js": "^4.0.2",
     "web-vitals": "^1.0.1"
   },
@@ -42,5 +44,10 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api"
+  "proxy": "http://localhost:8800/api",
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
+  }
 }

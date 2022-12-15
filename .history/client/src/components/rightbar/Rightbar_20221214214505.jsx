@@ -60,7 +60,7 @@ export default function Rightbar({ user }) {
           </div>
         </div>
         <h4 className="rightbarTitle">Bạn bè</h4>
-        <span className="rightbarPeople">{friends?.length} người bạn</span>
+        <span className="my-3 block">{friends?.length} người bạn</span>
         <div className="rightbarFollowings">
           {friends &&
             friends.length > 0 &&
@@ -75,7 +75,7 @@ export default function Rightbar({ user }) {
                   alt=""
                   className="rightbarFollowingImg"
                 />
-                <span className="rightbarFollowingName">{item?.username}</span>
+                <span className="rightbarFollowingName">John Carter</span>
               </div>
             ))}
         </div>

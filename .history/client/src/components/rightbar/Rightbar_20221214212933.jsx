@@ -60,24 +60,16 @@ export default function Rightbar({ user }) {
           </div>
         </div>
         <h4 className="rightbarTitle">Bạn bè</h4>
-        <span className="rightbarPeople">{friends?.length} người bạn</span>
+        <span className="my-3">{friends?.length} người bạn</span>
         <div className="rightbarFollowings">
-          {friends &&
-            friends.length > 0 &&
-            friends.map((item) => (
-              <div className="rightbarFollowing">
-                <img
-                  src={
-                    item?.profilePicture
-                      ? PF + item?.profilePicture
-                      : PF + "person/noAvatar.png"
-                  }
-                  alt=""
-                  className="rightbarFollowingImg"
-                />
-                <span className="rightbarFollowingName">{item?.username}</span>
-              </div>
-            ))}
+          <div className="rightbarFollowing">
+            <img
+              src={`${PF}person/1.jpeg`}
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">John Carter</span>
+          </div>
         </div>
       </>
     );

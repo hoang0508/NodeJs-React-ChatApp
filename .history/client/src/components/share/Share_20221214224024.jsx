@@ -3,7 +3,6 @@ import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import { BsFillTrashFill } from "react-icons/bs";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
@@ -55,7 +54,7 @@ export default function Share() {
             className="shareInput"
             ref={desc}
           />
-          {/* <div className="modal-share">
+          <div className="modal-share">
             <div className="modal-share--content">
               <div className="modal-share--info">
                 <div className="modal-share--avatar">
@@ -68,24 +67,10 @@ export default function Share() {
                     alt=""
                   />
                 </div>
-                <span className="modal-share--name">{user?.username}</span>
+                <span>{user?.username}</span>
               </div>
-              <input
-                placeholder={`${user?.username} ơi, bạn đang nghĩ gì thế?`}
-                className="shareInput"
-                ref={desc}
-              />
-              <div className={`${file ? "modal-share--upload" : ""}`}>
-                {file ? <img src={URL.createObjectURL(file)} /> : ""}
-                {file && (
-                  <span
-                    className="modal-share--upload-remove"
-                    onClick={() => setFile(null)}
-                  >
-                    <BsFillTrashFill />
-                  </span>
-                )}
-              </div>
+              <span>{`${user?.username} ơi, bạn đang nghĩ gì thế?`}</span>
+              <div>{file ? <img src={URL.createObjectURL(file)} /> : ""}</div>
               <form className="shareBottom" onSubmit={handleSubmitShare}>
                 <div className="shareOptions">
                   <label htmlFor="file" className="shareOption">
@@ -121,10 +106,10 @@ export default function Share() {
                 </button>
               </form>
             </div>
-          </div> */}
+          </div>
         </div>
         <hr className="shareHr" />
-        <form className="shareBottom" onSubmit={handleSubmitShare}>
+        {/* <form className="shareBottom" onSubmit={handleSubmitShare}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
@@ -154,7 +139,7 @@ export default function Share() {
           <button className="shareButton" type="submit">
             Chia sẻ
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );
