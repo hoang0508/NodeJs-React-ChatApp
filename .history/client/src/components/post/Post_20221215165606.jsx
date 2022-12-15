@@ -19,9 +19,9 @@ export default function Post({ post }) {
     setIsLiked(post?.like?.includes(currentUser?._id));
   }, [post?.like, currentUser?._id]);
 
-  const Likehandle = () => {
+  const Likehandle = async () => {
     try {
-      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +48,9 @@ export default function Post({ post }) {
       }
     };
     getFriends();
-  }, [user]);
+  }, [user._id]);
+
+  console.log(friends);
 
   const userLike =
     friends &&
@@ -59,14 +61,23 @@ export default function Post({ post }) {
       .join(",");
 
   useEffect(() => {
-    if (like === 0) {
-      setTextLike("Chưa có lượt thích!");
-    } else if (like < 3) {
-      setTextLike(`${like} lượt thích`);
-    } else if (like >= 3) {
-      setTextLike(`${userLike} và ${friends.length} người khác`);
+    console.log(like);
+    switch (like) {
+      case (like = 0):
+        return setTextLike("Chưa có lượt thích!");
+      case (like = 1):
+        return setTextLike("lllll");
+      case +like < 3:
+        return setTextLike(`Có ${like} lượt thích`);
+      case +like >= 3:
+        return setTextLike(`${userLike} và ${friends.length} người khác`);
+      default:
+        // setTextLike("Chưa có lượt thích!");
+        break;
     }
-  }, [like]);
+  }, [friends.length, like, userLike]);
+
+  console.log(textLike);
 
   return (
     <div className="post">

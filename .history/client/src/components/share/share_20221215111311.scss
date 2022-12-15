@@ -13,9 +13,6 @@
       display: flex;
       align-items: center;
       gap: 0 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
       .shareProfileImg {
         width: 40px;
         height: 40px;
@@ -34,27 +31,7 @@
       &-item {
         display: flex;
         align-items: center;
-        gap: 0 10px;
-        &--video {
-          font-size: 20px;
-          svg {
-            fill: crimson;
-          }
-        }
-        &--image {
-          font-size: 20px;
-
-          svg {
-            fill: #20e3b2;
-          }
-        }
-        &--emjoy {
-          font-size: 20px;
-
-          svg {
-            fill: #ff6651;
-          }
-        }
+        gap: 0 8px;
       }
     }
   }

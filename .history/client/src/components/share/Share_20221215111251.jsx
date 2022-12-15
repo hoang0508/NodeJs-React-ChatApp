@@ -8,13 +8,15 @@ import {
   BsFillCameraVideoFill,
   BsFillEmojiLaughingFill,
 } from "react-icons/bs";
+import { GrFormClose } from "react-icons/gr";
 import { IoIosImages } from "react-icons/io";
-import ModalShare from "../modal/ModalShare";
 
 export default function Share() {
-  const { user, desc, file, setFile, showShare, handleClickShowShare } =
-    useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc = useRef();
+  const [file, setFile] = useState(null);
+  const [showShare, setShowShare] = useState(false);
 
   const handleSubmitShare = async (e) => {
     e.preventDefault();
@@ -43,6 +45,10 @@ export default function Share() {
     }
   };
 
+  const handleClickShowShare = () => {
+    setShowShare(!showShare);
+  };
+
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -67,28 +73,34 @@ export default function Share() {
           </div>
           <div className="shareVideo">
             <div className="shareVideo-item">
-              <span className="shareVideo-item--video">
+              <span>
                 <BsFillCameraVideoFill />
               </span>
               <span>Video trực tiếp</span>
             </div>
 
             <div className="shareVideo-item">
-              <span className="shareVideo-item--image">
+              <span>
                 <IoIosImages />
               </span>
               <span>Ảnh/video</span>
             </div>
             <div className="shareVideo-item">
-              <span className="shareVideo-item--emjoy">
+              <span>
                 <BsFillEmojiLaughingFill />
               </span>
               <span>Cảm xúc/hoạt động</span>
             </div>
           </div>
           {showShare && (
-            <ModalShare textBtn="Chia sẻ" handleSubmitShare={handleSubmitShare}>
-              <>
+            <div className="modal-share">
+              <div className="modal-share--content">
+                <span
+                  className="modal-share--close"
+                  onClick={() => setShowShare(false)}
+                >
+                  <GrFormClose />
+                </span>
                 <div className="modal-share--info">
                   <div className="modal-share--avatar">
                     <img
@@ -118,8 +130,42 @@ export default function Share() {
                     </span>
                   )}
                 </div>
-              </>
-            </ModalShare>
+                <form className="shareBottom" onSubmit={handleSubmitShare}>
+                  <div className="shareOptions">
+                    <label htmlFor="file" className="shareOption">
+                      <PermMedia htmlColor="tomato" className="shareIcon" />
+                      <span className="shareOptionText">Ảnh/Video</span>
+                      <input
+                        style={{ display: "none" }}
+                        type="file"
+                        name=""
+                        id="file"
+                        accept=".png,.jpeg,.jpg"
+                        onChange={(e) => setFile(e.target.files[0])}
+                      />
+                    </label>
+                    <div className="shareOption">
+                      <Label htmlColor="blue" className="shareIcon" />
+                      <span className="shareOptionText">Tag</span>
+                    </div>
+                    <div className="shareOption">
+                      <Room htmlColor="green" className="shareIcon" />
+                      <span className="shareOptionText">Location</span>
+                    </div>
+                    <div className="shareOption">
+                      <EmojiEmotions
+                        htmlColor="goldenrod"
+                        className="shareIcon"
+                      />
+                      <span className="shareOptionText">Feelings</span>
+                    </div>
+                  </div>
+                  <button className="shareButton" type="submit">
+                    Chia sẻ
+                  </button>
+                </form>
+              </div>
+            </div>
           )}
         </div>
       </div>

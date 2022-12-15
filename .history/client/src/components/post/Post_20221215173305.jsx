@@ -50,6 +50,8 @@ export default function Post({ post }) {
     getFriends();
   }, [user]);
 
+  console.log(friends);
+
   const userLike =
     friends &&
     friends.length > 0 &&
@@ -59,14 +61,29 @@ export default function Post({ post }) {
       .join(",");
 
   useEffect(() => {
+    // switch (like) {
+    //   case 0:
+    //     return setTextLike("Chưa có lượt thích!");
+    //   case 1:
+    //     return setTextLike("lllll");
+    //   case +like < 3:
+    //     return setTextLike(`Có ${like} lượt thích`);
+    //   case +like >= 3:
+    //     return setTextLike(`${userLike} và ${friends.length} người khác`);
+    //   default:
+    //     setTextLike("Chưa có lượt thích!");
+    //     break;
+    // }
     if (like === 0) {
       setTextLike("Chưa có lượt thích!");
     } else if (like < 3) {
-      setTextLike(`${like} lượt thích`);
+      setTextLike(`Có ${like} lượt thích`);
     } else if (like >= 3) {
       setTextLike(`${userLike} và ${friends.length} người khác`);
     }
   }, [like]);
+
+  console.log(textLike);
 
   return (
     <div className="post">

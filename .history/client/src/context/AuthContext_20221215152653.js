@@ -14,10 +14,6 @@ export const AuthContextProvider = ({ children }) => {
   const desc = useRef();
   const [file, setFile] = useState(null);
   const [showShare, setShowShare] = useState(false);
-
-  const handleClickShowShare = () => {
-    setShowShare(!showShare);
-  };
   return (
     <AuthContext.Provider
       value={{
@@ -30,7 +26,6 @@ export const AuthContextProvider = ({ children }) => {
         setFile,
         showShare,
         setShowShare,
-        handleClickShowShare,
       }}
     >
       {children}

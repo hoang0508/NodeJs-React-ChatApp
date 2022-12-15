@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { FaFacebookMessenger } from "react-icons/fa";
-import { IoNotificationsSharp } from "react-icons/io5";
+import { IoMdNotifications, IoNotificationsSharp } from "react-icons/io";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
