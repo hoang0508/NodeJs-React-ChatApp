@@ -1,0 +1,50 @@
+import { EmojiEmotions, Label, PermMedia, Room } from "@material-ui/icons";
+import React, { useContext } from "react";
+import { GrFormClose } from "react-icons/gr";
+import { IoIosImages } from "react-icons/io";
+import { AuthContext } from "../../context/AuthContext";
+import "./Modal.scss";
+const ModalShare = ({
+  children,
+  heading = "",
+  textBtn = "",
+  handleSubmit,
+  closeModal = () => {},
+  ...props
+}) => {
+  const { setFile } = useContext(AuthContext);
+  return (
+    <div className="modal-share">
+      <div className="modal-share--content">
+        <h3 className="modal-share--title">{heading}</h3>
+        <span className="modal-share--close" onClick={closeModal}>
+          <GrFormClose />
+        </span>
+        {children}
+        <form className="modal-share--add" onSubmit={handleSubmit}>
+          <div className="modal-share--add-option">
+            <label htmlFor="file" className="">
+              <span className="option-icon">
+                <IoIosImages />
+              </span>
+              <span className="option-text">Ảnh/Video</span>
+              <input
+                style={{ display: "none" }}
+                type="file"
+                name=""
+                id="file"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
+          </div>
+          <button className="moda-share--button" type="submit">
+            {textBtn}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ModalShare;

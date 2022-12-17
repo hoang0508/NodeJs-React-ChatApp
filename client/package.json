@@ -17,6 +17,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
     "sass": "^1.56.2",
+    "sweetalert2": "^11.6.15",
     "timeago.js": "^4.0.2",
     "web-vitals": "^1.0.1"
   },
