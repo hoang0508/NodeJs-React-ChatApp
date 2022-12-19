@@ -52,7 +52,6 @@ export default function Share() {
       toast.success("Đăng bài viết thành công!!");
     } catch (error) {
       console.log(error);
-      toast.error("Đăng bài thất bại!!");
     }
   };
 
