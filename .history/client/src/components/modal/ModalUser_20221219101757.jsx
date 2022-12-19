@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { GrFormClose } from "react-icons/gr";
 import { IoIosImages } from "react-icons/io";
 import { AuthContext } from "../../context/AuthContext";
-import Input from "../input/Input";
 import Label from "../label/Label";
 import "./Modal.scss";
 const ModalUser = ({ userId, closeModal = () => {} }) => {
@@ -87,102 +86,100 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
     fetchUser();
   }, [currentUser, userId]);
 
-  console.log(filePicture);
-
   return (
     <div className="modal-share">
-      <div className="modal-share--content modal-share--content-user">
+      <div className="modal-share--content">
         <span className="modal-share--close" onClick={closeModal}>
           <GrFormClose />
         </span>
         <div className="modal-share--user">
           <div className="modal-user--image">
             <Label>Ảnh nền</Label>
-            <div className="image-coverpicture">
-              {fileCover ? (
-                <img src={URL.createObjectURL(fileCover)} />
-              ) : (
-                <Label htmlFor="fileCover" className="image-file">
-                  <span className="option-icon">
-                    <IoIosImages />
-                  </span>
-                  <input
-                    style={{ display: "none" }}
-                    type="file"
-                    name=""
-                    id="fileCover"
-                    accept=".png,.jpeg,.jpg"
-                    onChange={(e) => setFileCover(e.target.files[0])}
-                  />
-                </Label>
-              )}
+            <div>
+              <Label htmlFor="file" className="">
+                <span className="option-icon">
+                  <IoIosImages />
+                </span>
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  name=""
+                  id="file"
+                  accept=".png,.jpeg,.jpg"
+                  onChange={(e) => setFileCover(e.target.files[0])}
+                />
+              </Label>
             </div>
           </div>
           <div className="modal-user--image">
             <Label>Ảnh đại diện</Label>
-            <div className="image-profilePicture">
-              {filePicture ? (
-                <img src={URL.createObjectURL(filePicture)} />
-              ) : (
-                <Label htmlFor="filePicture" className="image-file">
-                  <span className="option-icon">
-                    <IoIosImages />
-                  </span>
-                  <input
-                    style={{ display: "none" }}
-                    type="file"
-                    name=""
-                    id="filePicture"
-                    accept=".png,.jpeg,.jpg"
-                    onChange={(e) => setFilePicture(e.target.files[0])}
-                  />
-                </Label>
-              )}
+            <div>
+              <label htmlFor="file" className="">
+                <span className="option-icon">
+                  <IoIosImages />
+                </span>
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  name=""
+                  id="file"
+                  accept=".png,.jpeg,.jpg"
+                  onChange={(e) => setFilePicture(e.target.files[0])}
+                />
+              </label>
             </div>
           </div>
           <form className="modal-user--form" onSubmit={handleSubmitUser}>
-            <div className="modal-user--form-group">
-              <div className="modal-user--group">
-                <Label htmlFor="desc">Biệt danh</Label>
-                <Input control={control} type="text" name="desc" id="desc" />
-              </div>
-              <div className="modal-user--group">
-                <Label htmlFor="address">Địa chỉ</Label>
-                <Input
-                  control={control}
-                  type="text"
-                  name="address"
-                  id="address"
-                />
-              </div>
-            </div>
-            <div className="modal-user--form-group">
-              <div className="modal-user--group">
-                <Label htmlFor="country">Quê quán</Label>
-                <Input
-                  control={control}
-                  type="text"
-                  name="country"
-                  id="country"
-                />
-              </div>
-              <div className="modal-user--group">
-                <Label htmlFor="school">Trường học</Label>
-                <Input
-                  control={control}
-                  type="text"
-                  name="school"
-                  id="school"
-                />
-              </div>
+            <div className="modal-user--group">
+              <Label htmlFor="address">Biệt danh</Label>
+              <input
+                type="text"
+                name=""
+                id="address"
+                value={currentUser?.desc}
+                onChange={(e) =>
+                  setDesc((prev) => ({ ...prev, desc: e.target.value }))
+                }
+              />
             </div>
             <div className="modal-user--group">
-              <Label htmlFor="company">Công ty</Label>
-              <Input
-                control={control}
+              <Label htmlFor="address">Địa chỉ</Label>
+              <input
                 type="text"
-                name="company"
-                id="company"
+                name=""
+                id="address"
+                onChange={(e) => setAddress(e.target.value)}
+                value={currentUser?.address}
+              />
+            </div>
+            <div className="modal-user--group">
+              <Label htmlFor="address">Quê quán</Label>
+              <input
+                type="text"
+                name=""
+                id="address"
+                onChange={(e) => setCoutry(e.target.value)}
+                value={currentUser?.country}
+              />
+            </div>
+            <div className="modal-user--group">
+              <Label htmlFor="address">Trường học</Label>
+              <input
+                type="text"
+                name=""
+                id="address"
+                onChange={(e) => setSchools(e.target.value)}
+                value={currentUser?.schools}
+              />
+            </div>
+            <div className="modal-user--group">
+              <Label htmlFor="address">Công ty</Label>
+              <input
+                type="text"
+                name=""
+                id="address"
+                onChange={(e) => setCompany(e.target.value)}
+                value={currentUser?.company}
               />
             </div>
             <button type="submit">Cập nhật</button>

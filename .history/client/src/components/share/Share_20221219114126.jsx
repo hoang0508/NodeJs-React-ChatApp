@@ -6,7 +6,6 @@ import { BsFillTrashFill, BsFillEmojiLaughingFill } from "react-icons/bs";
 import { IoIosImages } from "react-icons/io";
 import ModalShare from "../modal/ModalShare";
 import { FaVideo } from "react-icons/fa";
-import { toast } from "react-toastify";
 
 export default function Share() {
   const {
@@ -49,10 +48,8 @@ export default function Share() {
       setFile(null);
       setInputDesc("");
       setShowShare(false);
-      toast.success("Đăng bài viết thành công!!");
     } catch (error) {
       console.log(error);
-      toast.error("Đăng bài thất bại!!");
     }
   };
 
@@ -126,7 +123,7 @@ export default function Share() {
                   onChange={(e) => handleInputDesc(e)}
                 />
                 <div className={`${file ? "modal-share--upload" : ""}`}>
-                  {file ? <img src={URL.createObjectURL(file)} alt="#" /> : ""}
+                  {file ? <img src={URL.createObjectURL(file)} /> : ""}
                   {file && (
                     <span
                       className="modal-share--upload-remove"

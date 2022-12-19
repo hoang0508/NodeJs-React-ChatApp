@@ -102,7 +102,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
               {fileCover ? (
                 <img src={URL.createObjectURL(fileCover)} />
               ) : (
-                <Label htmlFor="fileCover" className="image-file">
+                <Label htmlFor="file" className="image-file">
                   <span className="option-icon">
                     <IoIosImages />
                   </span>
@@ -110,7 +110,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
                     style={{ display: "none" }}
                     type="file"
                     name=""
-                    id="fileCover"
+                    id="file"
                     accept=".png,.jpeg,.jpg"
                     onChange={(e) => setFileCover(e.target.files[0])}
                   />
@@ -124,7 +124,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
               {filePicture ? (
                 <img src={URL.createObjectURL(filePicture)} />
               ) : (
-                <Label htmlFor="filePicture" className="image-file">
+                <Label htmlFor="file" className="image-file">
                   <span className="option-icon">
                     <IoIosImages />
                   </span>
@@ -132,7 +132,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
                     style={{ display: "none" }}
                     type="file"
                     name=""
-                    id="filePicture"
+                    id="file"
                     accept=".png,.jpeg,.jpg"
                     onChange={(e) => setFilePicture(e.target.files[0])}
                   />

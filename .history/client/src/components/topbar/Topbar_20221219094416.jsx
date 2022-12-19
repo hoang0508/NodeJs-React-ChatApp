@@ -38,6 +38,7 @@ export default function Topbar() {
         </div>
         <Link to={`/profile/${user.username}`}>
           {" "}
+          <span>{user.username}</span>
           <img
             src={
               user.profilePicture
@@ -48,7 +49,6 @@ export default function Topbar() {
             className="topbarImg"
           />
         </Link>
-        <button>Đăng xuất</button>
       </div>
     </div>
   );

@@ -44,7 +44,7 @@
     margin-top: 35px;
     height: 500px;
     overflow-y: scroll;
-    padding: 0 10px;
+    padding-right: 10px;
     .modal-user--image {
       display: flex;
       flex-direction: column;
@@ -61,12 +61,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
       }
       .image-file {
         font-size: 80px;
@@ -77,17 +71,10 @@
         border: 1px dashed #ccc;
         width: 180px;
         height: 180px;
+        border-radius: 100rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 100rem;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 100rem;
-        }
       }
     }
     .modal-user--form {

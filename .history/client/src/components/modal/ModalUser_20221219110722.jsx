@@ -87,8 +87,6 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
     fetchUser();
   }, [currentUser, userId]);
 
-  console.log(filePicture);
-
   return (
     <div className="modal-share">
       <div className="modal-share--content modal-share--content-user">
@@ -102,7 +100,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
               {fileCover ? (
                 <img src={URL.createObjectURL(fileCover)} />
               ) : (
-                <Label htmlFor="fileCover" className="image-file">
+                <Label htmlFor="file" className="image-file">
                   <span className="option-icon">
                     <IoIosImages />
                   </span>
@@ -110,7 +108,7 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
                     style={{ display: "none" }}
                     type="file"
                     name=""
-                    id="fileCover"
+                    id="file"
                     accept=".png,.jpeg,.jpg"
                     onChange={(e) => setFileCover(e.target.files[0])}
                   />
@@ -121,23 +119,19 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
           <div className="modal-user--image">
             <Label>Ảnh đại diện</Label>
             <div className="image-profilePicture">
-              {filePicture ? (
-                <img src={URL.createObjectURL(filePicture)} />
-              ) : (
-                <Label htmlFor="filePicture" className="image-file">
-                  <span className="option-icon">
-                    <IoIosImages />
-                  </span>
-                  <input
-                    style={{ display: "none" }}
-                    type="file"
-                    name=""
-                    id="filePicture"
-                    accept=".png,.jpeg,.jpg"
-                    onChange={(e) => setFilePicture(e.target.files[0])}
-                  />
-                </Label>
-              )}
+              <label htmlFor="file" className="image-file">
+                <span className="option-icon">
+                  <IoIosImages />
+                </span>
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  name=""
+                  id="file"
+                  accept=".png,.jpeg,.jpg"
+                  onChange={(e) => setFilePicture(e.target.files[0])}
+                />
+              </label>
             </div>
           </div>
           <form className="modal-user--form" onSubmit={handleSubmitUser}>

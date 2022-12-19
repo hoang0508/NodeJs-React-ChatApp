@@ -108,9 +108,9 @@ const ModalUser = ({ userId, closeModal = () => {} }) => {
                   </span>
                   <input
                     style={{ display: "none" }}
-                    type="file"
+                    type="fileCover"
                     name=""
-                    id="fileCover"
+                    // id="file"
                     accept=".png,.jpeg,.jpg"
                     onChange={(e) => setFileCover(e.target.files[0])}
                   />
