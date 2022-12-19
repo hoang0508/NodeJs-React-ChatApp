@@ -1,0 +1,23 @@
+.input {
+  position: relative;
+  &-search {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.25s linear;
+    &:focus {
+      border-color: #2c64ff;
+      &::placeholder {
+        color: #1c1c1c;
+      }
+    }
+    &::placeholder {
+      color: #cccc;
+    }
+  }
+  &-icon {
+    font-size: 20px;
+  }
+}

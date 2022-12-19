@@ -1,0 +1,32 @@
+.input {
+  position: relative;
+  &-search {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.25s linear;
+    position: relative;
+    &:focus {
+      border-color: #2c64ff;
+      &::placeholder {
+        color: #1c1c1c;
+      }
+    }
+    &::placeholder {
+      color: #cccc;
+    }
+  }
+  &-icon {
+    position: absolute;
+    top: 53%;
+    transform: translateY(-100%);
+    right: 15px;
+    cursor: pointer;
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
