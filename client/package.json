@@ -17,6 +17,7 @@
     "react-hook-form": "^7.41.0",
     "react-icons": "^4.7.1",
     "react-otp-input": "^2.4.0",
+    "react-quill": "^2.0.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
