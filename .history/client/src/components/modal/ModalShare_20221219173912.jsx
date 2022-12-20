@@ -1,0 +1,73 @@
+import { EmojiEmotions, Label, PermMedia, Room } from "@material-ui/icons";
+import React, { useContext } from "react";
+import { GrFormClose } from "react-icons/gr";
+import { IoIosImages } from "react-icons/io";
+import { IoLocation } from "react-icons/io5";
+import { AiTwotoneTags } from "react-icons/ai";
+import { AuthContext } from "../../context/AuthContext";
+import "./Modal.scss";
+import { BsFillEmojiLaughingFill, BsThreeDots } from "react-icons/bs";
+import Button from "../button/Button";
+const ModalShare = ({
+  children,
+  heading = "",
+  textBtn = "",
+  handleSubmit,
+  closeModal = () => {},
+  ...props
+}) => {
+  const { setFile, file } = useContext(AuthContext);
+  return (
+    <div className="modal-share">
+      <div className="modal-share--content">
+        <div className="modal-share--heading">
+          <h3 className="modal-share--title">{heading}</h3>
+          <span className="modal-share--close" onClick={closeModal}>
+            <GrFormClose />
+          </span>
+        </div>
+        <div className={file ? "modal-share--scroll" : ""}>
+          {children}
+
+          <form className="modal-share--add" onSubmit={handleSubmit}>
+            <div className="modal-share--add-option">
+              <p className="option-text">Thêm vào bài viết của bạn</p>
+              <div className="option-select">
+                <label htmlFor="file" className="">
+                  <span className="option-icon">
+                    <IoIosImages />
+                  </span>
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    name=""
+                    id="file"
+                    accept=".png,.jpeg,.jpg"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </label>
+                <span className="option-icon">
+                  <AiTwotoneTags />
+                </span>
+                <span className="option-icon">
+                  <BsFillEmojiLaughingFill />
+                </span>
+                <span className="option-icon">
+                  <IoLocation />
+                </span>
+                <span className="option-icon">
+                  <BsThreeDots />
+                </span>
+              </div>
+            </div>
+            <Button className="modal-share--button" type="submit">
+              {textBtn}
+            </Button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ModalShare;
