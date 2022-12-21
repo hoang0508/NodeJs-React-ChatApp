@@ -1,0 +1,21 @@
+.comment {
+  padding: 10px;
+  &-input {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    .postProfileImg {
+      flex-shrink: 0;
+    }
+    .input {
+      margin-bottom: 0;
+      flex: 1;
+      .input-group {
+        .comment-desc {
+          border-radius: 100rem;
+          border: 0;
+        }
+      }
+    }
+  }
+}
