@@ -1,0 +1,41 @@
+.comment {
+  padding: 10px;
+  &-input {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    .postProfileImg {
+      flex-shrink: 0;
+    }
+    .input {
+      margin-bottom: 0;
+      flex: 1;
+      .input-group {
+        .comment-desc {
+          border-radius: 100rem;
+          border: 0;
+          background-color: #f0f2f5;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &-content {
+    &--item {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      gap: 0 10px;
+    }
+    &--desc {
+      background-color: #f0f2f5;
+      display: inline-flex;
+      flex-direction: column;
+      grid-area: 10px 0;
+      padding: 10px;
+      border-radius: 18px;
+    }
+  }
+}
