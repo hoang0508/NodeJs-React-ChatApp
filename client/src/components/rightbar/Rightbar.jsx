@@ -60,6 +60,8 @@ export default function Rightbar({ user }) {
     } catch (err) {}
     setFollowed(!followed);
   };
+  console.log(user);
+  console.log(currentUser);
 
   const handleShowModalUser = () => {
     setShowModalUser(!showModalUser);
