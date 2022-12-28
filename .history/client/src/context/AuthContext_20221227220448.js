@@ -1,0 +1,71 @@
+import { createContext, useEffect, useReducer, useState } from "react";
+import AuthReducer from "./AuthReducer";
+
+const INITIAL_STATE = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isFecthing: false,
+  error: false,
+};
+
+export const AuthContext = createContext(INITIAL_STATE);
+
+export const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+  const [posts, setPosts] = useState([]);
+  const [file, setFile] = useState(null);
+  const [showShare, setShowShare] = useState(false);
+  const [showPostUpdate, setShowPostUpdate] = useState(false);
+  const [commentData, setcommentData] = useState([]);
+  const [followed, setFollowed] = useState(
+    state?.user?.followings?.includes(state?.user?._id)
+  );
+
+  const handleFileImage = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleClickShowShare = () => {
+    setShowShare(!showShare);
+  };
+
+  // save local
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
+
+  // // Followed
+  // useEffect(() => {
+  //   if (state?.user.followings.includes(state?.user?._id)) {
+  //     setFollowed(state?.user.followings.includes( user?._id));
+  //   } else {
+  //     setFollowed(false);
+  //   }
+  // }, [state?.user.followings, setFollowed, user?._id]);
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user: state.user,
+        isFecthing: state.isFecthing,
+        error: state.error,
+        dispatch,
+        file,
+        setFile,
+        handleFileImage,
+        showShare,
+        setShowShare,
+        handleClickShowShare,
+        posts,
+        setPosts,
+        showPostUpdate,
+        setShowPostUpdate,
+        setcommentData,
+        commentData,
+        followed,
+        setFollowed,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};

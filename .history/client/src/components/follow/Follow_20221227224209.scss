@@ -1,0 +1,9 @@
+.rightbarFollowButton {
+  border: 0;
+  background-color: #f0f2f5;
+  .FollowButton-progress {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+  }
+}

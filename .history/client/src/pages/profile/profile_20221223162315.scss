@@ -1,0 +1,83 @@
+.profile {
+  max-width: 1100px;
+  margin: 0 auto;
+  .profileCover {
+    height: 400px;
+    position: relative;
+    .profileCoverImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+
+  .profileUserInfo {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+    position: absolute;
+    top: 80%;
+    left: 30px;
+  }
+  .profileRight {
+    .profileRightTop {
+      background-color: #fff;
+      padding-bottom: 30px;
+      position: relative;
+    }
+    .profileRightBottom {
+      border-top: 1px solid #ced0d4;
+      margin-top: 140px;
+      .rightbar {
+        height: 100vh;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 15px;
+      }
+    }
+
+    .profileUserImg {
+      width: 200px;
+      height: 200px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+      }
+    }
+
+    .profileInfo {
+      margin-top: 20px;
+      .profileInfoName {
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .profileInfoDesc {
+        font-weight: 400;
+        font-size: 17px;
+      }
+    }
+    .profileRightBottom {
+      display: flex;
+    }
+  }
+}
+
+.profile-logout {
+  display: inline-block;
+  border: 1px solid transparent;
+  font-size: 14px;
+  background-color: #42b72a;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s linear;
+  &:hover {
+    opacity: 0.6;
+  }
+}
