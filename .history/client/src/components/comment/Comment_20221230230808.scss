@@ -1,0 +1,125 @@
+.comment {
+  padding: 10px;
+  &-input {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    z-index: 10;
+    position: relative;
+    .comment-input--emoji {
+      position: absolute;
+      bottom: 61px;
+      right: 20px;
+      z-index: -1;
+    }
+    .comment-input--desc {
+      background-color: #eee;
+      border-radius: 100rem;
+      padding: 10px 15px;
+      width: 100%;
+      transition: all 0.25s linear;
+      position: relative;
+    }
+    &--update {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 10px 0;
+      &-btn {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        span.text-remove {
+          font-size: 14px;
+          cursor: pointer;
+          font-weight: 400;
+          color: #65676b;
+        }
+        button.btn-update {
+          border: 0;
+          padding: 5px 10px;
+          font-weight: 400;
+          font-size: 14px;
+          background-color: #f0f2f5;
+          color: #65676b;
+          cursor: pointer;
+        }
+      }
+    }
+    .postProfileImg {
+      flex-shrink: 0;
+    }
+    .input {
+      margin-bottom: 0;
+      flex: 1;
+      .input-group {
+        .comment-desc {
+          border-radius: 100rem;
+          border: 0;
+          background-color: #f0f2f5;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &-content {
+    &--item {
+      display: flex;
+      margin: 20px 0;
+      gap: 0 10px;
+    }
+    &--desc {
+      background-color: #f0f2f5;
+      display: inline-flex;
+      flex-direction: column;
+      grid-area: 10px 0;
+      padding: 10px;
+      border-radius: 18px;
+      &-name {
+        font-weight: 600;
+      }
+      &-text {
+        font-weight: 400;
+      }
+    }
+    &--time {
+      padding-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+  &-more {
+    color: #65676b;
+    font-weight: 500;
+    cursor: pointer;
+    &--hidden {
+      display: none;
+    }
+  }
+  .comment-content--list {
+    position: relative;
+    .comment-func {
+      background-color: #fff;
+      box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+      padding: 10px;
+      position: absolute;
+      bottom: -50px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+      width: 230px;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 10;
+    }
+  }
+  .postTopRight-dots {
+    cursor: pointer;
+  }
+}
