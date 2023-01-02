@@ -151,7 +151,6 @@ export default function Topbar() {
                           </div>
                         </div>
                         <span
-                          className="search-friends--change-empty"
                           onClick={() => handleClickRemoveSearch(item?._id)}
                         >
                           <FaTimes />

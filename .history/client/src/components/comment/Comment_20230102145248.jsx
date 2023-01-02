@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../context/AuthContext";
 import Input from "../input/Input";
 import "./Comment.scss";
+import { timeSince } from "../../util/ComvertTime";
 import useValueToggle from "../../hooks/useValueToggle";
 import {
   BsFillEmojiLaughingFill,

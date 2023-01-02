@@ -3,14 +3,13 @@ import { Search } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { FaFacebookMessenger, FaTimes } from "react-icons/fa";
+import { FaFacebookMessenger } from "react-icons/fa";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { debounce } from "lodash";
 import useLocalStorage from "../../hooks/useLocalStrorage";
 import useValueToggle from "../../hooks/useValueToggle";
-import useClickOutSide from "../../hooks/UseClickOutSide";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
@@ -21,9 +20,8 @@ export default function Topbar() {
   const navigate = useNavigate();
   // localStrorage
   const { storedValue, setValue } = useLocalStorage("userInfoFriends", []);
-  // ouside
-
-  const { nodeRef: searchRef, show, setShow } = useClickOutSide();
+  // toggle
+  const { valueToggle, setValueToggle } = useValueToggle();
 
   // Logout
   const handleProfileLogout = () => {
@@ -56,14 +54,6 @@ export default function Topbar() {
     }
   };
 
-  const handleClickRemoveSearch = (id) => {
-    const valueRemoveSearch =
-      storedValue &&
-      storedValue.length > 0 &&
-      storedValue.filter((item) => item?._id !== id);
-    setValue(valueRemoveSearch);
-  };
-
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -71,8 +61,8 @@ export default function Topbar() {
           <span className="logo">HH social media</span>
         </Link>
       </div>
-      <div className="topbarCenter" ref={searchRef}>
-        <div className="searchbar" onClick={() => setShow(true)}>
+      <div className="topbarCenter">
+        <div className="searchbar">
           <Search className="searchIcon" />
           <input
             placeholder="Tìm kiếm bạn bè..."
@@ -80,7 +70,7 @@ export default function Topbar() {
             onChange={(e) => handleChangeUserFriend(e)}
           />
         </div>
-        {show && (
+        {valueToggle && (
           <div className="search-friends">
             {changeUserName !== "" ? (
               <div>
@@ -129,11 +119,12 @@ export default function Topbar() {
                   {storedValue &&
                     storedValue.length > 0 &&
                     storedValue.map((item) => (
-                      <div key={item?._id} className="search-friends--change">
-                        <div
-                          className="search-friends--change-info"
-                          onClick={() => handleInfoUserSearch(item)}
-                        >
+                      <div
+                        key={item?._id}
+                        className="search-friends--change"
+                        onClick={() => handleInfoUserSearch(item)}
+                      >
+                        <div className="search-friends--change-info">
                           <div className="search-friends--image">
                             <img
                               src={
@@ -150,12 +141,7 @@ export default function Topbar() {
                             </span>
                           </div>
                         </div>
-                        <span
-                          className="search-friends--change-empty"
-                          onClick={() => handleClickRemoveSearch(item?._id)}
-                        >
-                          <FaTimes />
-                        </span>
+                        <span></span>
                       </div>
                     ))}
                 </div>

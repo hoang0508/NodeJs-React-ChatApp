@@ -66,20 +66,6 @@ router.get("/userAll", async (req, res) => {
   }
 });
 
-// search 1 users
-router.get("/search", async (req, res) => {
-  const username = req.query.username;
-  const userAll = await User.find({});
-  try {
-    const resultSearch = userAll.filter((item) =>
-      item?.username.toLowerCase().includes(username.toLocaleLowerCase())
-    );
-    res.status(200).json(resultSearch);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 //get friends
 router.get("/friends/:userId", async (req, res) => {
   try {

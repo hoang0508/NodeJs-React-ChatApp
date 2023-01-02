@@ -66,15 +66,14 @@ router.get("/userAll", async (req, res) => {
   }
 });
 
-// search 1 users
+// get 1 users
 router.get("/search", async (req, res) => {
   const username = req.query.username;
   const userAll = await User.find({});
+  console.log("🚀 ~ file: users.js:73 ~ router.get ~ userAll", userAll);
   try {
-    const resultSearch = userAll.filter((item) =>
-      item?.username.toLowerCase().includes(username.toLocaleLowerCase())
-    );
-    res.status(200).json(resultSearch);
+    // const user =  await User.filter
+    // res.status(200).json(other);
   } catch (err) {
     res.status(500).json(err);
   }

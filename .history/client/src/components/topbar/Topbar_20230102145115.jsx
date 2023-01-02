@@ -3,27 +3,19 @@ import { Search } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { FaFacebookMessenger, FaTimes } from "react-icons/fa";
+import { FaFacebookMessenger } from "react-icons/fa";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { debounce } from "lodash";
 import useLocalStorage from "../../hooks/useLocalStrorage";
-import useValueToggle from "../../hooks/useValueToggle";
-import useClickOutSide from "../../hooks/UseClickOutSide";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   const [usernameFriend, setUserNameFriend] = useState();
   const [changeUserName, setChangeUserName] = useState("");
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  // navigate
   const navigate = useNavigate();
-  // localStrorage
-  const { storedValue, setValue } = useLocalStorage("userInfoFriends", []);
-  // ouside
-
-  const { nodeRef: searchRef, show, setShow } = useClickOutSide();
 
   // Logout
   const handleProfileLogout = () => {
@@ -46,6 +38,9 @@ export default function Topbar() {
     fetchUserFriends();
   }, [changeUserName]);
 
+  //
+  const { storedValue, setValue } = useLocalStorage("userInfoFriends", []);
+
   const handleInfoUserSearch = (data) => {
     navigate(`/profile/${data?.username}`);
     const isExcited = storedValue.some((item) => item?._id === data?._id);
@@ -56,14 +51,6 @@ export default function Topbar() {
     }
   };
 
-  const handleClickRemoveSearch = (id) => {
-    const valueRemoveSearch =
-      storedValue &&
-      storedValue.length > 0 &&
-      storedValue.filter((item) => item?._id !== id);
-    setValue(valueRemoveSearch);
-  };
-
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -71,8 +58,8 @@ export default function Topbar() {
           <span className="logo">HH social media</span>
         </Link>
       </div>
-      <div className="topbarCenter" ref={searchRef}>
-        <div className="searchbar" onClick={() => setShow(true)}>
+      <div className="topbarCenter">
+        <div className="searchbar">
           <Search className="searchIcon" />
           <input
             placeholder="Tìm kiếm bạn bè..."
@@ -80,13 +67,54 @@ export default function Topbar() {
             onChange={(e) => handleChangeUserFriend(e)}
           />
         </div>
-        {show && (
-          <div className="search-friends">
-            {changeUserName !== "" ? (
+        <div className="search-friends">
+          {changeUserName !== "" ? (
+            <div>
+              {usernameFriend &&
+                usernameFriend.length > 0 &&
+                usernameFriend.map((item) => (
+                  <div
+                    key={item?._id}
+                    className="search-friends--change"
+                    onClick={() => handleInfoUserSearch(item)}
+                  >
+                    <div className="search-friends--change-info">
+                      <div className="search-friends--image">
+                        <img
+                          src={
+                            item?.profilePicture
+                              ? PF + item?.profilePicture
+                              : PF + "person/noAvatar.png"
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div className="search-friends--person">
+                        <span className="person-username">
+                          {item?.username}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          ) : (
+            <>
+              <div className="search-friends--save">
+                <span className="search-friends--save-near">
+                  Tìm kiếm gần đây
+                </span>
+                <span className="search-friends--save-update">Chỉnh sửa</span>
+              </div>
               <div>
-                {usernameFriend &&
-                  usernameFriend.length > 0 &&
-                  usernameFriend.map((item) => (
+                {storedValue.length <= 0 && (
+                  <p className="search-friends--save--empty">
+                    Không có tìm kiếm nào gần đây
+                  </p>
+                )}
+                {storedValue &&
+                  storedValue.length > 0 &&
+                  storedValue.map((item) => (
                     <div
                       key={item?._id}
                       className="search-friends--change"
@@ -109,60 +137,13 @@ export default function Topbar() {
                           </span>
                         </div>
                       </div>
+                      <span></span>
                     </div>
                   ))}
               </div>
-            ) : (
-              <>
-                <div className="search-friends--save">
-                  <span className="search-friends--save-near">
-                    Tìm kiếm gần đây
-                  </span>
-                  <span className="search-friends--save-update">Chỉnh sửa</span>
-                </div>
-                <div>
-                  {storedValue.length <= 0 && (
-                    <p className="search-friends--save--empty">
-                      Không có tìm kiếm nào gần đây
-                    </p>
-                  )}
-                  {storedValue &&
-                    storedValue.length > 0 &&
-                    storedValue.map((item) => (
-                      <div key={item?._id} className="search-friends--change">
-                        <div
-                          className="search-friends--change-info"
-                          onClick={() => handleInfoUserSearch(item)}
-                        >
-                          <div className="search-friends--image">
-                            <img
-                              src={
-                                item?.profilePicture
-                                  ? PF + item?.profilePicture
-                                  : PF + "person/noAvatar.png"
-                              }
-                              alt=""
-                            />
-                          </div>
-                          <div className="search-friends--person">
-                            <span className="person-username">
-                              {item?.username}
-                            </span>
-                          </div>
-                        </div>
-                        <span
-                          className="search-friends--change-empty"
-                          onClick={() => handleClickRemoveSearch(item?._id)}
-                        >
-                          <FaTimes />
-                        </span>
-                      </div>
-                    ))}
-                </div>
-              </>
-            )}
-          </div>
-        )}
+            </>
+          )}
+        </div>
       </div>
       <div className="topbarRight">
         <div className="topbarIcons">

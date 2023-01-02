@@ -3,7 +3,7 @@ import { Search } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { FaFacebookMessenger, FaTimes } from "react-icons/fa";
+import { FaFacebookMessenger } from "react-icons/fa";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -54,14 +54,6 @@ export default function Topbar() {
     } else {
       setValue([...storedValue, data]);
     }
-  };
-
-  const handleClickRemoveSearch = (id) => {
-    const valueRemoveSearch =
-      storedValue &&
-      storedValue.length > 0 &&
-      storedValue.filter((item) => item?._id !== id);
-    setValue(valueRemoveSearch);
   };
 
   return (
@@ -129,11 +121,12 @@ export default function Topbar() {
                   {storedValue &&
                     storedValue.length > 0 &&
                     storedValue.map((item) => (
-                      <div key={item?._id} className="search-friends--change">
-                        <div
-                          className="search-friends--change-info"
-                          onClick={() => handleInfoUserSearch(item)}
-                        >
+                      <div
+                        key={item?._id}
+                        className="search-friends--change"
+                        onClick={() => handleInfoUserSearch(item)}
+                      >
+                        <div className="search-friends--change-info">
                           <div className="search-friends--image">
                             <img
                               src={
@@ -150,12 +143,7 @@ export default function Topbar() {
                             </span>
                           </div>
                         </div>
-                        <span
-                          className="search-friends--change-empty"
-                          onClick={() => handleClickRemoveSearch(item?._id)}
-                        >
-                          <FaTimes />
-                        </span>
+                        <span></span>
                       </div>
                     ))}
                 </div>

@@ -56,14 +56,6 @@ export default function Topbar() {
     }
   };
 
-  const handleClickRemoveSearch = (id) => {
-    const valueRemoveSearch =
-      storedValue &&
-      storedValue.length > 0 &&
-      storedValue.filter((item) => item?._id !== id);
-    setValue(valueRemoveSearch);
-  };
-
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -129,11 +121,12 @@ export default function Topbar() {
                   {storedValue &&
                     storedValue.length > 0 &&
                     storedValue.map((item) => (
-                      <div key={item?._id} className="search-friends--change">
-                        <div
-                          className="search-friends--change-info"
-                          onClick={() => handleInfoUserSearch(item)}
-                        >
+                      <div
+                        key={item?._id}
+                        className="search-friends--change"
+                        onClick={() => handleInfoUserSearch(item)}
+                      >
+                        <div className="search-friends--change-info">
                           <div className="search-friends--image">
                             <img
                               src={
@@ -150,10 +143,7 @@ export default function Topbar() {
                             </span>
                           </div>
                         </div>
-                        <span
-                          className="search-friends--change-empty"
-                          onClick={() => handleClickRemoveSearch(item?._id)}
-                        >
+                        <span>
                           <FaTimes />
                         </span>
                       </div>

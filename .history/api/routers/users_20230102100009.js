@@ -72,7 +72,7 @@ router.get("/search", async (req, res) => {
   const userAll = await User.find({});
   try {
     const resultSearch = userAll.filter((item) =>
-      item?.username.toLowerCase().includes(username.toLocaleLowerCase())
+      item?.usernam.toLowerCase().includes(username.toLocaleLowerCase())
     );
     res.status(200).json(resultSearch);
   } catch (err) {

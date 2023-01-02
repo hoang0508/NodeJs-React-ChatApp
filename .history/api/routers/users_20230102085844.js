@@ -66,15 +66,14 @@ router.get("/userAll", async (req, res) => {
   }
 });
 
-// search 1 users
-router.get("/search", async (req, res) => {
+// get All user
+router.get("/:username", async (req, res) => {
   const username = req.query.username;
-  const userAll = await User.find({});
+  console.log("🚀 ~ file: users.js:72 ~ router.get ~ username", username);
   try {
-    const resultSearch = userAll.filter((item) =>
-      item?.username.toLowerCase().includes(username.toLocaleLowerCase())
-    );
-    res.status(200).json(resultSearch);
+    // const userAll = await User.findById({
+    // });
+    // res.status(200).json(userAll);
   } catch (err) {
     res.status(500).json(err);
   }

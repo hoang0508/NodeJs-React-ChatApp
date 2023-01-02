@@ -129,11 +129,12 @@ export default function Topbar() {
                   {storedValue &&
                     storedValue.length > 0 &&
                     storedValue.map((item) => (
-                      <div key={item?._id} className="search-friends--change">
-                        <div
-                          className="search-friends--change-info"
-                          onClick={() => handleInfoUserSearch(item)}
-                        >
+                      <div
+                        key={item?._id}
+                        className="search-friends--change"
+                        onClick={() => handleInfoUserSearch(item)}
+                      >
+                        <div className="search-friends--change-info">
                           <div className="search-friends--image">
                             <img
                               src={
@@ -151,7 +152,6 @@ export default function Topbar() {
                           </div>
                         </div>
                         <span
-                          className="search-friends--change-empty"
                           onClick={() => handleClickRemoveSearch(item?._id)}
                         >
                           <FaTimes />
