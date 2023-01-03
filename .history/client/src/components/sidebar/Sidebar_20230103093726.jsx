@@ -24,7 +24,7 @@ export default function Sidebar() {
             </span>
             <span className="sidebarListItemText">Trang chủ</span>
           </li>
-          <Link to={`/profile/${user?.username}`} className="sidebar-profile">
+          <Link to={`/profile/${user?.username}`}>
             <li className="sidebarListItem">
               <div className="sidebarListItem-image">
                 <img

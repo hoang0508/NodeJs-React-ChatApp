@@ -236,10 +236,8 @@ export default function Post({ post }) {
             <span className="postDate">{moment(post.createdAt).fromNow()}</span>
           </div>
           <div className="postTopRight" ref={nodeRef}>
-            <div>
-              {currentUser?._id !== post?.userId && (
-                <span className="postTopRight-flow">Đang theo dõi</span>
-              )}
+            <div className="postTopRight-flow">
+              {currentUser?._id !== post?.userId && <span>Đang theo dõi</span>}
             </div>
             <span
               className="postTopRight-dots"

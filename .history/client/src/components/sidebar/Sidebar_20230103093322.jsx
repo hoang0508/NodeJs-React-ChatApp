@@ -9,7 +9,6 @@ import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { TbCalendarEvent } from "react-icons/tb";
 import { SiCoursera } from "react-icons/si";
-import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const { user } = useContext(AuthContext);
@@ -24,21 +23,19 @@ export default function Sidebar() {
             </span>
             <span className="sidebarListItemText">Trang chủ</span>
           </li>
-          <Link to={`/profile/${user?.username}`} className="sidebar-profile">
-            <li className="sidebarListItem">
-              <div className="sidebarListItem-image">
-                <img
-                  src={
-                    user?.profilePicture
-                      ? PF + user?.profilePicture
-                      : PF + "person/noAvatar.png"
-                  }
-                  alt=""
-                />
-              </div>
-              <span className="sidebarListItem-name">{user?.username}</span>
-            </li>
-          </Link>
+          <li className="sidebarListItem">
+            <div className="sidebarListItem-image">
+              <img
+                src={
+                  user?.profilePicture
+                    ? PF + user?.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
+                alt=""
+              />
+            </div>
+            <span className="sidebarListItem-name">{user?.username}</span>
+          </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
               <FaUserFriends />

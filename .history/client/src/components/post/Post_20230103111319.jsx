@@ -237,9 +237,7 @@ export default function Post({ post }) {
           </div>
           <div className="postTopRight" ref={nodeRef}>
             <div>
-              {currentUser?._id !== post?.userId && (
-                <span className="postTopRight-flow">Đang theo dõi</span>
-              )}
+              {currentUser?._id !== post?.userId(<span>Đang theo dõi</span>)}
             </div>
             <span
               className="postTopRight-dots"

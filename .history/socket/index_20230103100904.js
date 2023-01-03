@@ -32,7 +32,6 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
     const user = getUser(receiverId);
-    console.log("🚀 ~ file: index.js:35 ~ socket.on ~ user", user);
     io.to(user?.socketId).emit("getMessage", {
       senderId,
       text,

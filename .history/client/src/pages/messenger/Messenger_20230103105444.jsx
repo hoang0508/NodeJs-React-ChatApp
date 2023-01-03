@@ -9,7 +9,7 @@ import Input from "../../components/input/Input";
 import { useForm } from "react-hook-form";
 import { BiInfoCircle } from "react-icons/bi";
 import { FiPhoneCall, FiVideo } from "react-icons/fi";
-import { BsEmojiLaughing, BsFillTrashFill } from "react-icons/bs";
+import { BsEmojiLaughing } from "react-icons/bs";
 import { IoIosImages } from "react-icons/io";
 import { io } from "socket.io-client";
 
@@ -194,17 +194,13 @@ export default function Messenger() {
                   onSubmit={handleSubmit(handleSendMessenger)}
                 >
                   <div className="chatBoxFile">
-                    {file && (
-                      <>
-                        <img src={URL.createObjectURL(file)} alt="#" />
-                        <div
-                          className="chatBoxFile-remove"
-                          onClick={() => setFile(null)}
-                        >
-                          <BsFillTrashFill />
-                        </div>
-                      </>
-                    )}
+                    {file && <img src={URL.createObjectURL(file)} alt="#" />}
+                    <div
+                      className="comment-input--remove"
+                      onClick={() => setFile(null)}
+                    >
+                      <BsFillTrashFill />
+                    </div>
                   </div>
                   <Input
                     control={control}

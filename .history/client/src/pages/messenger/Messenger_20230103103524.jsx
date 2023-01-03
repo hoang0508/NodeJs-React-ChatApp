@@ -9,7 +9,7 @@ import Input from "../../components/input/Input";
 import { useForm } from "react-hook-form";
 import { BiInfoCircle } from "react-icons/bi";
 import { FiPhoneCall, FiVideo } from "react-icons/fi";
-import { BsEmojiLaughing, BsFillTrashFill } from "react-icons/bs";
+import { BsEmojiLaughing } from "react-icons/bs";
 import { IoIosImages } from "react-icons/io";
 import { io } from "socket.io-client";
 
@@ -23,7 +23,6 @@ export default function Messenger() {
     conversations,
     handleFileImage,
     file,
-    setFile,
   } = useContext(AuthContext);
   const [userCurrentMess, setUserCurrentMess] = useState();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -135,7 +134,7 @@ export default function Messenger() {
   return (
     <>
       <Topbar />
-      <div className="messenger">
+      <div className={`${messages ? "messenger-overlow" : "messenger"}`}>
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
@@ -189,23 +188,13 @@ export default function Messenger() {
                     </div>
                   ))}
                 </div>
+                <div className="chatBoxFile">
+                  {file && <img src={URL.createObjectURL(file)} alt="#" />}
+                </div>
                 <form
                   className="chatBoxBottom"
                   onSubmit={handleSubmit(handleSendMessenger)}
                 >
-                  <div className="chatBoxFile">
-                    {file && (
-                      <>
-                        <img src={URL.createObjectURL(file)} alt="#" />
-                        <div
-                          className="chatBoxFile-remove"
-                          onClick={() => setFile(null)}
-                        >
-                          <BsFillTrashFill />
-                        </div>
-                      </>
-                    )}
-                  </div>
                   <Input
                     control={control}
                     name="textMessenger"

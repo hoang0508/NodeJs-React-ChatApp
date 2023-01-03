@@ -214,7 +214,7 @@ export default function Post({ post }) {
     commentData.length > 0 &&
     commentData.filter((item) => item?.postId === post?._id).map((item) => item)
       .length;
-  console.log(post);
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -237,9 +237,7 @@ export default function Post({ post }) {
           </div>
           <div className="postTopRight" ref={nodeRef}>
             <div>
-              {currentUser?._id !== post?.userId && (
-                <span className="postTopRight-flow">Đang theo dõi</span>
-              )}
+              {currentUser?._id !== post?._id(<span>Đang theo dõi</span>)}
             </div>
             <span
               className="postTopRight-dots"

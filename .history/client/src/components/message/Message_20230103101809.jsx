@@ -29,6 +29,7 @@ export default function Message({ message, own, userCurrentMess }) {
               <img src={message?.image ? PF + message?.image : ""} alt="" />
             </div>
           )}
+
           <p className="messageText">{message.text}</p>
           <div className="messageBottom">
             {moment(message?.createdAt).fromNow()}

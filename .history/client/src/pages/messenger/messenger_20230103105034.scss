@@ -75,7 +75,7 @@
 
 .chatBoxBottom {
   width: 100%;
-  position: relative;
+
   &-input {
     border-radius: 100rem;
     &:focus {
@@ -135,19 +135,5 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-  }
-  &-remove {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    border-radius: 100rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
   }
 }

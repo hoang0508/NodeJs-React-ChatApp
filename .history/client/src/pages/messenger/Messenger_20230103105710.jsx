@@ -194,17 +194,13 @@ export default function Messenger() {
                   onSubmit={handleSubmit(handleSendMessenger)}
                 >
                   <div className="chatBoxFile">
-                    {file && (
-                      <>
-                        <img src={URL.createObjectURL(file)} alt="#" />
-                        <div
-                          className="chatBoxFile-remove"
-                          onClick={() => setFile(null)}
-                        >
-                          <BsFillTrashFill />
-                        </div>
-                      </>
-                    )}
+                    {file && <img src={URL.createObjectURL(file)} alt="#" />}
+                    <div
+                      className="chatBoxFile-remove"
+                      onClick={() => setFile(null)}
+                    >
+                      <BsFillTrashFill />
+                    </div>
                   </div>
                   <Input
                     control={control}

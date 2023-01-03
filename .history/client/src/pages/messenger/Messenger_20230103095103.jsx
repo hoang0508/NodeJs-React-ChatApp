@@ -9,7 +9,7 @@ import Input from "../../components/input/Input";
 import { useForm } from "react-hook-form";
 import { BiInfoCircle } from "react-icons/bi";
 import { FiPhoneCall, FiVideo } from "react-icons/fi";
-import { BsEmojiLaughing, BsFillTrashFill } from "react-icons/bs";
+import { BsEmojiLaughing } from "react-icons/bs";
 import { IoIosImages } from "react-icons/io";
 import { io } from "socket.io-client";
 
@@ -23,7 +23,6 @@ export default function Messenger() {
     conversations,
     handleFileImage,
     file,
-    setFile,
   } = useContext(AuthContext);
   const [userCurrentMess, setUserCurrentMess] = useState();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -43,15 +42,16 @@ export default function Messenger() {
   }, []);
 
   useEffect(() => {
-    socket?.current?.emit("addUser", currentUser?._id);
     socket.current.on("getMessage", (data) => {
+      console.log(data);
+      alert("okeoke");
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
         createdAt: Date.now(),
       });
     });
-  }, [currentUser?._id]);
+  }, []);
 
   useEffect(() => {
     arrivalMessage &&
@@ -193,19 +193,6 @@ export default function Messenger() {
                   className="chatBoxBottom"
                   onSubmit={handleSubmit(handleSendMessenger)}
                 >
-                  <div className="chatBoxFile">
-                    {file && (
-                      <>
-                        <img src={URL.createObjectURL(file)} alt="#" />
-                        <div
-                          className="chatBoxFile-remove"
-                          onClick={() => setFile(null)}
-                        >
-                          <BsFillTrashFill />
-                        </div>
-                      </>
-                    )}
-                  </div>
                   <Input
                     control={control}
                     name="textMessenger"

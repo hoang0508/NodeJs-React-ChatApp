@@ -4,12 +4,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { FaUserFriends } from "react-icons/fa";
 import { RiMovieLine } from "react-icons/ri";
-import { BsBookmark } from "react-icons/bs";
-import { AiOutlineArrowsAlt } from "react-icons/ai";
-import { HiUserGroup } from "react-icons/hi";
-import { TbCalendarEvent } from "react-icons/tb";
-import { SiCoursera } from "react-icons/si";
-import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const { user } = useContext(AuthContext);
@@ -24,21 +18,19 @@ export default function Sidebar() {
             </span>
             <span className="sidebarListItemText">Trang chủ</span>
           </li>
-          <Link to={`/profile/${user?.username}`} className="sidebar-profile">
-            <li className="sidebarListItem">
-              <div className="sidebarListItem-image">
-                <img
-                  src={
-                    user?.profilePicture
-                      ? PF + user?.profilePicture
-                      : PF + "person/noAvatar.png"
-                  }
-                  alt=""
-                />
-              </div>
-              <span className="sidebarListItem-name">{user?.username}</span>
-            </li>
-          </Link>
+          <li className="sidebarListItem">
+            <div className="sidebarListItem-image">
+              <img
+                src={
+                  user?.profilePicture
+                    ? PF + user?.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
+                alt=""
+              />
+            </div>
+            <span className="sidebarListItem-name">{user?.username}</span>
+          </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
               <FaUserFriends />
@@ -53,31 +45,31 @@ export default function Sidebar() {
           </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
-              <BsBookmark />
+              <ImHome />
             </span>
             <span className="sidebarListItemText">Đã lưu</span>
           </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
-              <AiOutlineArrowsAlt />
+              <ImHome />
             </span>
             <span className="sidebarListItemText">Gần đây nhất</span>
           </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
-              <HiUserGroup />
+              <ImHome />
             </span>
             <span className="sidebarListItemText">Nhóm</span>
           </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
-              <TbCalendarEvent />
+              <ImHome />
             </span>
             <span className="sidebarListItemText">Sự kiện</span>
           </li>
           <li className="sidebarListItem">
             <span className="sidebarListItem-icon">
-              <SiCoursera />
+              <ImHome />
             </span>
             <span className="sidebarListItemText">Khóa học</span>
           </li>

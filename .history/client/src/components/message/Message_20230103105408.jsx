@@ -1,10 +1,14 @@
 import "./message.scss";
 import moment from "moment";
 import "moment/locale/vi"; // without this line it didn't work
+import { BsFillTrashFill } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 moment.locale("vi");
 
 export default function Message({ message, own, userCurrentMess }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { setFile } = useContext(AuthContext);
 
   return (
     <div className={own ? "message own" : "message"}>
