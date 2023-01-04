@@ -17,10 +17,6 @@ export default function Messenger() {
   const [currentChat, setCurrentChat] = useState(null);
   const socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  console.log(
-    "🚀 ~ file: Messenger.jsx:20 ~ Messenger ~ arrivalMessage",
-    arrivalMessage
-  );
   const {
     user: currentUser,
     conversations,
@@ -60,7 +56,7 @@ export default function Messenger() {
         createdAt: Date.now(),
       });
     });
-  }, [currentUser?._id, file]);
+  }, [currentUser?._id]);
 
   useEffect(() => {
     arrivalMessage &&

@@ -11,7 +11,7 @@ ReactDOM.render(
   <BrowserRouter>
     <AuthContextProvider>
       <App />
-      <ToastContainer autoClose={false} />
+      <ToastContainer />
     </AuthContextProvider>
   </BrowserRouter>,
   document.getElementById("root")

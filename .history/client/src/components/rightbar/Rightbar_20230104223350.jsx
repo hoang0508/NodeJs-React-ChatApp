@@ -93,8 +93,8 @@ export default function Rightbar({ user }) {
                       <span className="birthdayText-one--date">sinh nhật</span>{" "}
                       của {item?.username}
                     </div>
-                    <div className="birthdayText-user">
-                      <div className="birthdayText-user--image">
+                    <div>
+                      <div>
                         <img
                           src={
                             item?.profilePicture
@@ -104,13 +104,9 @@ export default function Rightbar({ user }) {
                           alt=""
                         />
                       </div>
-                      <div className="birthdayText-user--info">
-                        <h3 className="birthdayText-user--name">
-                          {item?.username}
-                        </h3>
-                        <span className="birthdayText-user--date">
-                          {moment(item?.birthDate).format("LL")}
-                        </span>
+                      <div>
+                        <h3>{item?.username}</h3>
+                        <span>{moment(item?.birthDate).format("L")}</span>
                       </div>
                     </div>
                   </div>

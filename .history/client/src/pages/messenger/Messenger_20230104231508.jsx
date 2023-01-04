@@ -17,10 +17,6 @@ export default function Messenger() {
   const [currentChat, setCurrentChat] = useState(null);
   const socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  console.log(
-    "🚀 ~ file: Messenger.jsx:20 ~ Messenger ~ arrivalMessage",
-    arrivalMessage
-  );
   const {
     user: currentUser,
     conversations,
@@ -50,17 +46,13 @@ export default function Messenger() {
   useEffect(() => {
     socket?.current?.emit("addUser", currentUser?._id);
     socket.current.on("getMessage", (data) => {
-      console.log(
-        "🚀 ~ file: Messenger.jsx:49 ~ socket.current.on ~ data",
-        data
-      );
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
         createdAt: Date.now(),
       });
     });
-  }, [currentUser?._id, file]);
+  }, [currentUser?._id]);
 
   useEffect(() => {
     arrivalMessage &&
@@ -75,7 +67,7 @@ export default function Messenger() {
       setMessages(res?.data);
     };
     fetchMessenger();
-  }, [currentChat?._id, setMessages]);
+  }, [currentChat?._id]);
 
   // get messenger user current
   useEffect(() => {
@@ -124,14 +116,12 @@ export default function Messenger() {
       senderId: currentUser?._id,
       receiverId,
       text: values.textMessenger,
-      newMessenger,
     });
 
     try {
       const res = await axios.post(`/messages`, newMessenger);
       setMessages([...messages, res?.data]);
       reset({ textMessenger: "" });
-      setFile(null);
     } catch (error) {
       console.log(error);
     }

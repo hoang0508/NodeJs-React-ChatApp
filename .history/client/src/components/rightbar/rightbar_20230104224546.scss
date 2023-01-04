@@ -5,7 +5,9 @@
 .rightbarWrapper {
   padding: 20px;
   .friend-follow {
-    margin: 0 0 30px;
+    margin: 30px 0;
+    // overflow-y: scroll;
+    // height: 400px;
     &--title {
       font-weight: 600;
       font-size: 20px;
@@ -206,7 +208,6 @@
       height: 100%;
       object-fit: cover;
       border-radius: 100rem;
-      border: 3px solid #e94057;
     }
   }
   &--name {

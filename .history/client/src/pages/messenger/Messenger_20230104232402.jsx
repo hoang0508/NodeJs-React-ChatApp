@@ -60,7 +60,7 @@ export default function Messenger() {
         createdAt: Date.now(),
       });
     });
-  }, [currentUser?._id, file]);
+  }, [currentUser?._id]);
 
   useEffect(() => {
     arrivalMessage &&

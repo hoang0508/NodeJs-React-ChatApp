@@ -109,7 +109,7 @@ export default function Rightbar({ user }) {
                           {item?.username}
                         </h3>
                         <span className="birthdayText-user--date">
-                          {moment(item?.birthDate).format("LL")}
+                          {moment(item?.birthDate).format("L")}
                         </span>
                       </div>
                     </div>

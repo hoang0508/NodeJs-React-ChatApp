@@ -32,28 +32,19 @@ export default function Rightbar({ user }) {
     fetchDataUserAll();
   }, []);
 
-  const DateNow = moment(new Date())
-    .format("l")
-    .split("/")
-    .splice(0, 2)
-    .join("/");
-
   // filter user date birthday
   const filterUserBirthday =
     userBirthDay &&
     userBirthDay.length > 0 &&
     userBirthDay.filter((item) => {
-      const covertItemDate = moment(item?.birthDate)
-        .format("l")
-        .split("/")
-        .splice(0, 2)
-        .join("/");
-      if (DateNow === covertItemDate) {
-        return item;
-      }
+      console.log(moment(item?.birthDate).format("l"));
+      return (
+        moment(item?.birthDate).format("l") === moment(new Date()).format("l")
+      );
     });
 
-  console.log(filterUserBirthday);
+  const h = moment(new Date()).format("l").split("/").splice(0,1);
+  console.log(h);
 
   // friends
   useEffect(() => {
@@ -86,35 +77,16 @@ export default function Rightbar({ user }) {
             {filterUserBirthday &&
               filterUserBirthday.length > 0 &&
               filterUserBirthday.map((item) => {
-                return (
-                  <div>
+                if (filterUserBirthday.length === 1) {
+                  return (
                     <div key={item?._id} className="birthdayText-one">
                       Hôm nay{" "}
                       <span className="birthdayText-one--date">sinh nhật</span>{" "}
                       của {item?.username}
                     </div>
-                    <div className="birthdayText-user">
-                      <div className="birthdayText-user--image">
-                        <img
-                          src={
-                            item?.profilePicture
-                              ? PF + item?.profilePicture
-                              : PF + "person/noAvatar.png"
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="birthdayText-user--info">
-                        <h3 className="birthdayText-user--name">
-                          {item?.username}
-                        </h3>
-                        <span className="birthdayText-user--date">
-                          {moment(item?.birthDate).format("LL")}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                );
+                  );
+                }
+                <span key={item?._id}>oke</span>;
               })}
           </span>
         </div>

@@ -86,35 +86,16 @@ export default function Rightbar({ user }) {
             {filterUserBirthday &&
               filterUserBirthday.length > 0 &&
               filterUserBirthday.map((item) => {
-                return (
-                  <div>
+                if (filterUserBirthday.length === 1) {
+                  return (
                     <div key={item?._id} className="birthdayText-one">
                       Hôm nay{" "}
                       <span className="birthdayText-one--date">sinh nhật</span>{" "}
                       của {item?.username}
                     </div>
-                    <div className="birthdayText-user">
-                      <div className="birthdayText-user--image">
-                        <img
-                          src={
-                            item?.profilePicture
-                              ? PF + item?.profilePicture
-                              : PF + "person/noAvatar.png"
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="birthdayText-user--info">
-                        <h3 className="birthdayText-user--name">
-                          {item?.username}
-                        </h3>
-                        <span className="birthdayText-user--date">
-                          {moment(item?.birthDate).format("LL")}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                );
+                  );
+                }
+                <span key={item?._id}>oke</span>;
               })}
           </span>
         </div>

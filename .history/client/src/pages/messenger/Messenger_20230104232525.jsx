@@ -58,6 +58,7 @@ export default function Messenger() {
         sender: data.senderId,
         text: data.text,
         createdAt: Date.now(),
+        file,
       });
     });
   }, [currentUser?._id, file]);

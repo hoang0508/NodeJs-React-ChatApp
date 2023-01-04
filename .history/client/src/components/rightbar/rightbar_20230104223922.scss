@@ -5,7 +5,9 @@
 .rightbarWrapper {
   padding: 20px;
   .friend-follow {
-    margin: 0 0 30px;
+    margin: 30px 0;
+    // overflow-y: scroll;
+    // height: 400px;
     &--title {
       font-weight: 600;
       font-size: 20px;
@@ -192,12 +194,11 @@
 .birthdayText-user {
   display: flex;
   align-items: center;
-  grid-gap: 0 10px;
   gap: 0 10px;
   margin: 20px 0;
-  border-bottom: 2px solid #3333;
-  padding-bottom: 15px;
-  cursor: pointer;
+  &:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
   &--image {
     width: 40px;
     height: 40px;
@@ -206,13 +207,6 @@
       height: 100%;
       object-fit: cover;
       border-radius: 100rem;
-      border: 3px solid #e94057;
     }
-  }
-  &--name {
-    font-weight: 600;
-  }
-  &--date {
-    font-size: 14px;
   }
 }
