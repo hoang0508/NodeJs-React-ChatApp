@@ -1,0 +1,219 @@
+.comment {
+  padding: 10px 10px 15px;
+  &-input {
+    display: flex;
+    gap: 0 10px;
+    z-index: 10;
+    position: relative;
+    .comment-input--emoji {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: -1;
+    }
+    .comment-input--desc {
+      position: relative;
+      flex: 1;
+      input {
+        border: 1px solid transparent;
+        background-color: #eee;
+        font-weight: 400;
+        border-radius: 100rem;
+        padding: 10px 15px;
+        width: 100%;
+        transition: all 0.25s linear;
+        &:focus {
+          ::placeholder {
+            font-weight: 500;
+            color: #1c1c1c;
+          }
+        }
+        &::placeholder {
+          color: #999;
+        }
+      }
+      .comment-input--select {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        font-size: 20px;
+        cursor: pointer;
+        .option-icon {
+          cursor: pointer;
+          svg {
+            fill: #11998e;
+            font-size: 22px;
+          }
+        }
+        .icon-emoji {
+          svg {
+            fill: #f5af19;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+    &--update {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 10px 0;
+      &-file {
+        display: flex;
+        align-items: center;
+        gap: 0 20px;
+        margin-top: 10px;
+        .comment-input--image {
+          margin-top: 0;
+        }
+      }
+      &-btn {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        span.text-remove {
+          font-size: 14px;
+          cursor: pointer;
+          font-weight: 400;
+          color: #65676b;
+        }
+        button.btn-update {
+          border: 0;
+          padding: 5px 10px;
+          font-weight: 400;
+          font-size: 14px;
+          background-color: #f0f2f5;
+          color: #65676b;
+          cursor: pointer;
+        }
+      }
+    }
+    .postProfileImg {
+      flex-shrink: 0;
+    }
+    .input {
+      margin-bottom: 0;
+      flex: 1;
+      .input-group {
+        .comment-desc {
+          border-radius: 100rem;
+          border: 0;
+          background-color: #f0f2f5;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  .comment-input--image {
+    width: 150px;
+    height: 150px;
+    margin-top: 15px;
+    cursor: pointer;
+    position: relative;
+    &:hover .comment-input--remove {
+      opacity: 1;
+      visibility: visible;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .comment-input--remove {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 100rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      svg {
+        fill: #f12711;
+      }
+    }
+  }
+  &-content {
+    &--item {
+      display: flex;
+      margin: 20px 0;
+      gap: 0 10px;
+    }
+    &--desc {
+      background-color: #f0f2f5;
+      display: inline-flex;
+      flex-direction: column;
+      grid-area: 10px 0;
+      padding: 10px;
+      border-radius: 18px;
+      &-name {
+        font-weight: 600;
+      }
+      &-text {
+        font-weight: 400;
+      }
+    }
+    &--image {
+      width: 150px;
+      height: 150px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    &--time {
+      padding-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+  &-more {
+    color: #65676b;
+    font-weight: 500;
+    cursor: pointer;
+    &--hidden {
+      display: none;
+    }
+  }
+  .comment-content--list {
+    position: relative;
+    .comment-func {
+      background-color: #fff;
+      box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+      padding: 10px;
+      position: absolute;
+      top: 15%;
+      right: -200px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+      width: 230px;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 10;
+    }
+  }
+  .postTopRight-dots {
+    cursor: pointer;
+  }
+}

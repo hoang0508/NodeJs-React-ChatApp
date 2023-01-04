@@ -1,0 +1,161 @@
+.messenger {
+  display: flex;
+  overflow: hidden;
+  height: calc(100vh + 100px);
+}
+
+.chatMenu {
+  margin-top: 100px;
+  width: 30%;
+  height: 100vh;
+  border-right: 1px solid #ccc;
+}
+
+.chatMenuInput {
+  margin: 0 10px;
+  padding: 10px 15px;
+  border: 1px solid #eee;
+  border-radius: 100rem;
+  display: flex;
+  width: 95%;
+  outline: none;
+  &::placeholder {
+    font-size: 16px;
+    color: #1c1c1c;
+  }
+}
+
+.chatBox {
+  flex: 1 1;
+  padding: 0 15px;
+  margin-top: 100px;
+}
+
+.chatBoxWrapper {
+  height: 100vh;
+  .chatBoxWrapper-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    &--user {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+    }
+    &--images {
+      width: 45px;
+      height: 45px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 100rem;
+      }
+    }
+    &--username {
+      font-weight: 600;
+      color: #1c1c1c;
+    }
+    &--func {
+      display: flex;
+      align-items: center;
+      gap: 0 20px;
+      font-size: 23px;
+    }
+  }
+}
+
+.chatBoxTop {
+  overflow-y: scroll;
+  height: 400px;
+  padding-right: 10px;
+}
+
+.chatBoxBottom {
+  width: 100%;
+  position: relative;
+  &-input {
+    border-radius: 100rem;
+    &:focus {
+      border: 1px solid #11998e;
+      outline: none;
+    }
+  }
+  .input-icon {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    svg {
+      fill: #1c1c1c;
+    }
+  }
+}
+
+.chatOnline {
+  flex: 3;
+}
+
+.noConversationText {
+  // font-size: 50px;
+  // color: rgb(224, 220, 220);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+  &-hello {
+    &--title {
+      font-size: 45px;
+      text-align: center;
+      color: #1c1c1c;
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chatMenu {
+    flex: 1;
+  }
+
+  .chatMenuInput {
+    display: none;
+  }
+
+  .chatBox {
+    flex: 10;
+  }
+
+  .chatOnline {
+    flex: 1px;
+  }
+}
+
+.chatBoxFile {
+  position: absolute;
+  top: -460%;
+  width: 200px;
+  height: 200px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  &-remove {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
