@@ -71,7 +71,6 @@ export default function Register() {
       };
       try {
         await axios.post("auth/register", userNew);
-        toast.error("Đăng ký thành công!!");
         navigate(`/login`);
       } catch (error) {
         toast.error("Đăng ký thất bại!!");

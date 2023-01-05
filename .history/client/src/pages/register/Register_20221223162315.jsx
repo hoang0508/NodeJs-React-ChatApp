@@ -71,8 +71,8 @@ export default function Register() {
       };
       try {
         await axios.post("auth/register", userNew);
-        toast.error("Đăng ký thành công!!");
-        navigate(`/login`);
+        toast.warning("Bạn cần xác thực tài khoản!!");
+        navigate(`/auth-verity/${value.sdt}`);
       } catch (error) {
         toast.error("Đăng ký thất bại!!");
       }
