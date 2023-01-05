@@ -16,6 +16,7 @@ router.get("/:id", async (req, res) => {
 // tạo commment
 router.post("/", async (req, res) => {
   const newComments = new Comment(req.body);
+  console.log(req.body);
   try {
     const savedComment = await newComments.save();
     res.status(200).json(savedComment);
@@ -30,9 +31,9 @@ router.delete("/:id", async (req, res) => {
     const comment = await Comment.findById(req.params.id);
     if (comment.postId === req.body.postId) {
       await comment.deleteOne();
-      res.status(200).json("the comment has been deleted");
+      res.status(200).json("Bình luận này đã được xóa");
     } else {
-      res.status(403).json("you can delete only your comment");
+      res.status(403).json("Bạn chỉ có thể xóa bình luận của bạn");
     }
   } catch (err) {
     res.status(500).json(err);
@@ -49,7 +50,7 @@ router.put("/:id", async (req, res) => {
         success: true,
       });
     } else {
-      res.status(403).json("you can update only your post");
+      res.status(403).json("Bạn chỉ có thể cập nhật bài viết của bạn");
     }
   } catch (err) {
     res.status(500).json(err);

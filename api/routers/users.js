@@ -32,12 +32,12 @@ router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(req.params.id);
-      res.status(200).json("Account has been deleted");
+      res.status(200).json("Tài khoản đã bị xóa");
     } catch (err) {
       return res.status(500).json(err);
     }
   } else {
-    return res.status(403).json("You can delete only your account!");
+    return res.status(403).json("Bạn chỉ có thể xóa tài khoản của bản thân!");
   }
 });
 
@@ -110,15 +110,15 @@ router.put("/:id/follow", async (req, res) => {
       if (!user.followers.includes(req.body.userId)) {
         await user.updateOne({ $push: { followers: req.body.userId } });
         await currentUser.updateOne({ $push: { followings: req.params.id } });
-        res.status(200).json("user has been followed");
+        res.status(200).json("người dùng đã được theo dõi");
       } else {
-        res.status(403).json("you allready follow this user");
+        res.status(403).json("bạn đã theo dõi người này rồi");
       }
     } catch (err) {
       res.status(500).json(err);
     }
   } else {
-    res.status(403).json("you cant follow yourself");
+    res.status(403).json("bạn không thể theo dõi bản thân");
   }
 });
 
@@ -132,15 +132,15 @@ router.put("/:id/unfollow", async (req, res) => {
       if (user.followers.includes(req.body.userId)) {
         await user.updateOne({ $pull: { followers: req.body.userId } });
         await currentUser.updateOne({ $pull: { followings: req.params.id } });
-        res.status(200).json("user has been unfollowed");
+        res.status(200).json("người dùng đã bị hủy theo dõi");
       } else {
-        res.status(403).json("you dont follow this user");
+        res.status(403).json("bạn không theo dõi người này");
       }
     } catch (err) {
       res.status(500).json(err);
     }
   } else {
-    res.status(403).json("you cant unfollow yourself");
+    res.status(403).json("bạn không thể bỏ theo dõi bản thân");
   }
 });
 

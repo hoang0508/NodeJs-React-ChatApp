@@ -44,9 +44,9 @@ router.delete("/:id", async (req, res) => {
     const messenger = await Message.findById(req.params.id);
     if (messenger.sender === req.body.sender) {
       await messenger.deleteOne();
-      res.status(200).json("the mess has been deleted");
+      res.status(200).json("Tin nhẵn đã bị xóa");
     } else {
-      res.status(403).json("delete only your comment");
+      res.status(403).json("bạn chỉ có thể xóa tin nhắn của bạn");
     }
   } catch (err) {
     res.status(500).json(err);

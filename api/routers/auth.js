@@ -27,14 +27,14 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    !user && res.status(404).json("user not found");
+    !user && res.status(404).json("Không tìm thấy người dùng");
 
     // const validPassword = await bcrypt.compare(
     //   req.body.password,
     //   user.password
     // );
     const validPassword = await User.findOne({ password: req.body.password });
-    !validPassword && res.status(400).json("wrong password");
+    !validPassword && res.status(400).json("Lỗi mật khẩu");
 
     res.status(200).json(user);
   } catch (err) {

@@ -53,10 +53,11 @@ router.put("/:id/like", async (req, res) => {
     const post = await Post.findById(req.params.id);
     if (!post.likes.includes(req.body.userId)) {
       await post.updateOne({ $push: { likes: req.body.userId } });
-      res.status(200).json("The post has been liked");
+      //toán tử nối thêm một giá trị đã chỉ định vào một mảng.
+      res.status(200).json("Baì viết đã được thích");
     } else {
       await post.updateOne({ $pull: { likes: req.body.userId } });
-      res.status(200).json("The post has been disliked");
+      res.status(200).json("Bì viết đã bị ghét");
     }
   } catch (err) {
     res.status(500).json(err);

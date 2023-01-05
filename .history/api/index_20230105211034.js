@@ -46,7 +46,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    return res.status(200).json("File được cập nhật thành công!");
+    return res.status(200).json("File uploaded successfully!");
   } catch (error) {
     console.log(error);
   }
@@ -65,8 +65,3 @@ app.get("/", (req, res) => {
 app.listen(8800, () => {
   console.log("Backend server đã chạy!");
 });
-// $push: toán tử nối thêm một giá trị đã chỉ định vào một mảng.
-//$pull:Cáctoán tử loại bỏ khỏi một mảng hiện có tất cả các phiên bản của một giá trị hoặc các giá trị khớp với một điều kiện đã chỉ định.
-//$set: Cáctoán tử thay thế giá trị của một trường bằng giá trị đã chỉ định.
-// $all Cáctoán tử chọn các tài liệu trong đó giá trị của một trường là một mảng chứa tất cả các phần tử đã chỉ định
-// $in: Cáctoán tử chọn các tài liệu trong đó giá trị của một trường bằng với bất kỳ giá trị nào trong mảng đã chỉ định.
